@@ -1,34 +1,33 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import './App.css';
+import '@mantine/core/styles.css';
+
+import { AppShell, Container, MantineProvider } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
+import { theme } from './theme';
+import AppHeader from './components/sections/AppHeader';
+import Timer from './components/blocks/Timer';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const containerQuery = useMediaQuery(`(min-width: ${theme.breakpoints.lg})`);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <MantineProvider theme={theme} defaultColorScheme='light'>
+      <AppShell
+        header={{ height: { base: 60, md: 60, lg: 80, xl: 80 } }}
+        padding='md'
+      >
+        <AppShell.Header>
+          <Container h={'100%'} size={containerQuery ? 'lg' : 'sm'}>
+            <AppHeader />
+          </Container>
+        </AppShell.Header>
+        <AppShell.Main>
+          <Container h={'100%'} size={containerQuery ? 'lg' : 'sm'}>
+            <Timer start={true} stop={false} />
+          </Container>
+        </AppShell.Main>
+      </AppShell>
+    </MantineProvider>
   );
 }
 
