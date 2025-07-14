@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { Menu, ActionIcon } from '@mantine/core';
 import {
   IconSettings,
@@ -5,10 +6,13 @@ import {
   IconHistory,
   IconAdjustmentsAlt,
 } from '@tabler/icons-react';
+import MediaQueryContext from '../../contexts/MediaQueryContext';
 
 function AppMenu() {
+  const { mediaQuery } = useContext(MediaQueryContext);
+
   return (
-    <Menu position='bottom-start'>
+    <Menu width={mediaQuery ? 200 : 300} position='bottom-start'>
       <Menu.Target>
         <ActionIcon variant='default' size={'xl'}>
           <IconSettings stroke={1.5} />
