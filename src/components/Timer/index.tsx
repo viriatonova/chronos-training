@@ -5,15 +5,21 @@ import {
   IconPlayerPause,
   IconPlayerStop,
 } from '@tabler/icons-react';
-import classes from './times.module.css';
-import MediaQueryContext from '../../contexts/MediaQueryContext';
+import classes from './timer.module.css';
 import Ciclos from '../Ciclos';
+import MediaQueryContext from '../../contexts/MediaQueryContext';
+import useTaskContext from '../../hooks/useTaskContext';
+
 interface TimerProps {
   start: boolean;
   stop: boolean;
 }
+
 function Timer({ start, stop }: TimerProps) {
   const { mediaQuery } = useContext(MediaQueryContext);
+  const taskContext = useTaskContext();
+  const iconSize = 30;
+
   return (
     <Flex
       direction='column'
@@ -29,26 +35,35 @@ function Timer({ start, stop }: TimerProps) {
           fw='bold'
           ta='center'
         >
-          10:00
+          {taskContext.state.formattedSecondsRemaining}
         </Text>
         {start && stop}
       </Paper>
       <Flex
         w={'100%'}
         gap={mediaQuery ? 20 : 10}
-        direction='row'
-        justify={'flex-start'}
-        align={'center'}
+        direction={mediaQuery ? 'row' : 'column'}
+        justify={mediaQuery ? 'center' : 'flex-start'}
+        align={mediaQuery ? 'center' : 'flex-start'}
       >
-        <Button>
-          <IconPlayerPlay>Start</IconPlayerPlay>
-        </Button>
-        <Button>
-          <IconPlayerPause>Start</IconPlayerPause>
-        </Button>
-        <Button>
-          <IconPlayerStop>Start</IconPlayerStop>
-        </Button>
+        <Flex
+          w={mediaQuery ? '40%' : '100%'}
+          mt={mediaQuery ? 0 : 20}
+          gap={mediaQuery ? 20 : 10}
+          direction='row'
+          justify={'flex-start'}
+          align={mediaQuery ? 'center' : 'flex-start'}
+        >
+          <Button>
+            <IconPlayerPlay size={iconSize}>Start</IconPlayerPlay>
+          </Button>
+          <Button>
+            <IconPlayerPause size={iconSize}>Start</IconPlayerPause>
+          </Button>
+          <Button>
+            <IconPlayerStop size={iconSize}>Start</IconPlayerStop>
+          </Button>
+        </Flex>
         <Ciclos ciclos={5} />
       </Flex>
     </Flex>

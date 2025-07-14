@@ -13,7 +13,7 @@ function AppSettings() {
   };
 
   return (
-    <form onSubmit={form.onSubmit(handleSubmit)}>
+    <form style={{ marginTop: 20 }} onSubmit={form.onSubmit(handleSubmit)}>
       <TextInput
         label='Treino'
         placeholder='Teino'
