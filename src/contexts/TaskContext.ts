@@ -1,15 +1,15 @@
 import React, { createContext } from 'react';
-import initialTaskState from '../dto/Task.dto';
-import type { TaskState } from '../types/Task.type';
-
+import { TaskState } from '../core/Task';
 type TaskContextProps = {
-  state: TaskState;
-  setState: React.Dispatch<React.SetStateAction<TaskState>>;
+  taskState: TaskState;
+  setTaskState: React.Dispatch<React.SetStateAction<TaskState>>;
 };
 
+export const initialTaskState = new TaskState(null, 0, 0);
+
 const TaskContext = createContext<TaskContextProps>({
-  state: initialTaskState,
-  setState: () => {},
+  taskState: initialTaskState,
+  setTaskState: () => {},
 });
 
 export default TaskContext;

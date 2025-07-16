@@ -17,7 +17,7 @@ interface TimerProps {
 
 function Timer({ start, stop }: TimerProps) {
   const { mediaQuery } = useContext(MediaQueryContext);
-  const taskContext = useTaskContext();
+  const { taskState } = useTaskContext();
   const iconSize = 30;
 
   return (
@@ -35,7 +35,7 @@ function Timer({ start, stop }: TimerProps) {
           fw='bold'
           ta='center'
         >
-          {taskContext.state.formattedSecondsRemaining}
+          {taskState.formattedSecondsRemaining}
         </Text>
         {start && stop}
       </Paper>
@@ -55,13 +55,13 @@ function Timer({ start, stop }: TimerProps) {
           align={mediaQuery ? 'center' : 'flex-start'}
         >
           <Button>
-            <IconPlayerPlay size={iconSize}>Start</IconPlayerPlay>
+            <IconPlayerPlay size={iconSize} />
           </Button>
           <Button>
-            <IconPlayerPause size={iconSize}>Start</IconPlayerPause>
+            <IconPlayerPause size={iconSize} />
           </Button>
           <Button>
-            <IconPlayerStop size={iconSize}>Start</IconPlayerStop>
+            <IconPlayerStop size={iconSize} />
           </Button>
         </Flex>
         <Ciclos ciclos={5} />

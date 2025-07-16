@@ -17,7 +17,7 @@ function Ciclos({ ciclos }: CiclosProps) {
       justify='flex-start'
       align='center'
     >
-      <Title order={2}>Ciclos :</Title>
+      <Title order={2}>Ciclo :</Title>
       {Array.from({ length: ciclos }).map((_, i) => (
         <ColorSwatch
           size={mediaQuery ? 40 : 30}

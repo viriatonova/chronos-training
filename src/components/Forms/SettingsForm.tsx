@@ -1,8 +1,8 @@
 import { useForm } from '@mantine/form';
-import { Button, Group, TextInput } from '@mantine/core';
+import { Button, Group, TextInput, NumberInput } from '@mantine/core';
 import { TimeInput } from '@mantine/dates';
 
-function AppSettings() {
+function SettingsForm() {
   const form = useForm({
     mode: 'uncontrolled',
     // onSubmitPreventDefault: 'never'
@@ -15,20 +15,13 @@ function AppSettings() {
   return (
     <form style={{ marginTop: 20 }} onSubmit={form.onSubmit(handleSubmit)}>
       <TextInput
-        label='Treino'
-        placeholder='Teino'
-        {...form.getInputProps('name')}
+        label='Atividade'
+        placeholder='Supino reto'
+        {...form.getInputProps('atividade')}
       />
-      <TimeInput
-        label='Time'
-        placeholder='Time'
-        {...form.getInputProps('time')}
-      />
-      <TextInput
-        label='Email'
-        placeholder='Your email'
-        {...form.getInputProps('email')}
-      />
+      <TimeInput label='Descanso Curto' {...form.getInputProps('curto')} />
+      <TimeInput label='Descanso Longo' {...form.getInputProps('longo')} />
+      <NumberInput label='Ciclos' {...form.getInputProps('ciclos')} />
       <Group mt='md'>
         <Button type='submit'>Submit</Button>
       </Group>
@@ -36,4 +29,4 @@ function AppSettings() {
   );
 }
 
-export default AppSettings;
+export default SettingsForm;

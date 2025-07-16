@@ -12,10 +12,10 @@ const customTheme = createTheme({
     md: '16px',
     lg: '18px',
     xl: '22px',
-    axl: '26px',
-    bxl: '30px',
-    cxl: '36px',
-    dxl: '48px',
+    axl: '28px',
+    bxl: '32px',
+    cxl: '44px',
+    dxl: '52px',
     exl: '60px',
     fxl: '72px',
     gxl: '96px',
@@ -24,10 +24,10 @@ const customTheme = createTheme({
   headings: {
     sizes: {
       h1: {
-        fontSize: '{base: bxl, md: bxl, lg: cxl, xl: exl,}',
+        fontSize: '{base: bxl, md: cxl, lg: cxl, xl: exl}',
       },
       h2: {
-        fontSize: '{base: xl, md: axl, lg: bxl, xl: cxl,}',
+        fontSize: '{base: axl, md: bxl, lg: cxl, xl: dxl}',
       },
       h3: {
         fontSize: '{base: lg, md: xl, lg: axl, xl: bxl,}',

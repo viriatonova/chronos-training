@@ -1,15 +1,11 @@
-import React from 'react';
-import initialTaskState from '../dto/Task.dto';
-import TaskContext from '../contexts/TaskContext';
-
-const initialContextValue = {
-  state: initialTaskState,
-  setState: () => {},
-};
+import React, { useState } from 'react';
+import TaskContext, { initialTaskState } from '../contexts/TaskContext';
 
 function TaskProvider({ children }: { children: React.ReactNode }) {
+  const [taskState, setTaskState] = useState(initialTaskState);
+
   return (
-    <TaskContext.Provider value={initialContextValue}>
+    <TaskContext.Provider value={{ taskState, setTaskState }}>
       {children}
     </TaskContext.Provider>
   );
