@@ -1,12 +1,11 @@
 import { useContext } from 'react';
 import { Flex, Title, ColorSwatch } from '@mantine/core';
 import MediaQueryContext from '../../contexts/MediaQueryContext';
+import useTaskContext from '../../hooks/useTaskContext';
 
-interface CiclosProps {
-  ciclos: number;
-}
-function Ciclos({ ciclos }: CiclosProps) {
+function Ciclos() {
   const { mediaQuery } = useContext(MediaQueryContext);
+  const { taskState } = useTaskContext();
 
   return (
     <Flex
@@ -18,7 +17,7 @@ function Ciclos({ ciclos }: CiclosProps) {
       align='center'
     >
       <Title order={2}>Ciclo :</Title>
-      {Array.from({ length: ciclos }).map((_, i) => (
+      {Array.from({ length: taskState.currentCycle }).map((_, i) => (
         <ColorSwatch
           size={mediaQuery ? 40 : 30}
           key={i}

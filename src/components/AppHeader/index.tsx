@@ -5,7 +5,7 @@ function AppHeader() {
   return (
     <Flex h={'100%'} direction='row' justify={'space-between'} align={'center'}>
       <AppMenu />
-      <Text fz={'xl'}>Dylan</Text>
+      <Text fz={'xl'}>Chronos</Text>
       <ToggleThemeColorButton />
     </Flex>
   );

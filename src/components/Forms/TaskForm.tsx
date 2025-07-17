@@ -1,9 +1,16 @@
 import useTaskContext from '../../hooks/useTaskContext';
 import { useForm } from '@mantine/form';
 import { Button, Group, TextInput, ColorInput } from '@mantine/core';
-import { Task } from '../../core/Task';
+import Task from '../../core/Task';
+import { getNextCycle, getCycleType } from '../../lib/task.lib';
 function TaskForm() {
-  const { setTaskState } = useTaskContext();
+  const { taskState, setTaskState } = useTaskContext();
+
+  /**Updating the next task cycle from prev cycle */
+  const nextCycle = getNextCycle(taskState.currentCycle);
+
+  /**Updating the next task type from prev cycle */
+  const nextTaskType = getCycleType(nextCycle);
 
   const form = useForm({
     mode: 'uncontrolled',
@@ -25,8 +32,9 @@ function TaskForm() {
         ...prevState,
         tasks: [...prevState.tasks, newTask],
         activeTask: newTask,
-        currentCycle: 1,
         formattedSecondsRemaining: '00:00',
+        currentCycle: nextCycle,
+        type: nextTaskType,
         config: { ...prevState.config },
       };
     });
