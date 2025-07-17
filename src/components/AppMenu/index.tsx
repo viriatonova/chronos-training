@@ -1,13 +1,11 @@
-import { useContext } from 'react';
 import { Menu, Burger } from '@mantine/core';
 import { IconHome, IconHistory, IconAdjustmentsAlt } from '@tabler/icons-react';
-import MediaQueryContext from '../../contexts/MediaQueryContext';
-
+import useContainerQuery from '../../hooks/useCantainerQuery';
 function AppMenu() {
-  const { mediaQuery } = useContext(MediaQueryContext);
+  const containerQuery = useContainerQuery();
 
   return (
-    <Menu width={mediaQuery ? 200 : 300} position='bottom-start'>
+    <Menu width={containerQuery ? 200 : 300} position='bottom-start'>
       <Menu.Target>
         <Burger size='md' opened={false} />
       </Menu.Target>

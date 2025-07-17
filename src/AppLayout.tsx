@@ -1,15 +1,14 @@
 import './App.css';
 import '@mantine/core/styles.css';
-import { useContext } from 'react';
 import { AppShell, Container } from '@mantine/core';
-import MediaQueryContext from './contexts/MediaQueryContext';
 import AppHeader from './components/AppHeader';
+import useContainerQuery from './hooks/useCantainerQuery';
 
 type AppLayoutProps = {
   children: React.ReactNode;
 };
 function AppLayout({ children }: AppLayoutProps) {
-  const { mediaQuery } = useContext(MediaQueryContext);
+  const containerQuery = useContainerQuery();
 
   return (
     <AppShell
@@ -17,12 +16,12 @@ function AppLayout({ children }: AppLayoutProps) {
       padding='md'
     >
       <AppShell.Header>
-        <Container h={'100%'} size={mediaQuery ? 'lg' : 'sm'}>
+        <Container h={'100%'} size={containerQuery ? 'lg' : 'sm'}>
           <AppHeader />
         </Container>
       </AppShell.Header>
       <AppShell.Main>
-        <Container h={'100%'} size={mediaQuery ? 'lg' : 'sm'}>
+        <Container h={'100%'} size={containerQuery ? 'lg' : 'sm'}>
           {children}
         </Container>
       </AppShell.Main>

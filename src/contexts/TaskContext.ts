@@ -1,12 +1,11 @@
 import React, { createContext } from 'react';
-import TaskState from '../core/TaskState';
-import type { TaskStateInterface } from '../core/TaskState';
+import TaskState from '../core/tasks/entities/TaskState.entitie';
 type TaskContextProps = {
-  taskState: TaskStateInterface;
-  setTaskState: React.Dispatch<React.SetStateAction<TaskStateInterface>>;
+  taskState: TaskState;
+  setTaskState: React.Dispatch<React.SetStateAction<TaskState>>;
 };
 
-export const initialTaskState: TaskStateInterface = new TaskState(null, 0);
+export const initialTaskState: TaskState = new TaskState(null, 0);
 
 const TaskContext = createContext<TaskContextProps>({
   taskState: initialTaskState,

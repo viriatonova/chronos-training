@@ -1,5 +1,5 @@
 import Timer from '../components/Timer';
-import TaskForm from '../components/Forms/TaskForm';
+import CreateTaskForm from '../components/Forms/CreateTaskForm';
 import TaskQueue from '../components/TaskQueue';
 
 function Home() {
@@ -7,7 +7,7 @@ function Home() {
     <>
       <Timer start={true} stop={false} />
       <TaskQueue />
-      <TaskForm />
+      <CreateTaskForm />
     </>
   );
 }

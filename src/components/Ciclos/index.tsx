@@ -1,16 +1,15 @@
-import { useContext } from 'react';
 import { Flex, Title, ColorSwatch } from '@mantine/core';
-import MediaQueryContext from '../../contexts/MediaQueryContext';
 import useTaskContext from '../../hooks/useTaskContext';
+import useContainerQuery from '../../hooks/useCantainerQuery';
 
 function Ciclos() {
-  const { mediaQuery } = useContext(MediaQueryContext);
+  const containerQuery = useContainerQuery();
   const { taskState } = useTaskContext();
 
   return (
     <Flex
       w={'100%'}
-      mt={mediaQuery ? 0 : 20}
+      mt={containerQuery ? 0 : 20}
       gap={10}
       direction='row'
       justify='flex-start'
@@ -19,7 +18,7 @@ function Ciclos() {
       <Title order={2}>Ciclo :</Title>
       {Array.from({ length: taskState.currentCycle }).map((_, i) => (
         <ColorSwatch
-          size={mediaQuery ? 40 : 30}
+          size={containerQuery ? 40 : 30}
           key={i}
           color='var(--mantine-color-orange-7)'
         />

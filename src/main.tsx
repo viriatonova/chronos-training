@@ -1,5 +1,4 @@
 import App from './App.tsx';
-import MediaQueryProvider from './providers/MediaQueryProvider';
 import TaskProvider from './providers/TaskProvider';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -9,11 +8,9 @@ import { theme } from './theme';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <MantineProvider theme={theme} defaultColorScheme='light'>
-      <MediaQueryProvider>
-        <TaskProvider>
-          <App />
-        </TaskProvider>
-      </MediaQueryProvider>
+      <TaskProvider>
+        <App />
+      </TaskProvider>
     </MantineProvider>
   </StrictMode>,
 );
