@@ -17,9 +17,9 @@ class TaskState {
     this.secondsRemaining = secondsRemaining;
     this.formattedSecondsRemaining = '00:00';
     this.config = {
-      workTime: 0,
-      shortBreakTime: 0,
-      longBreakTime: 0,
+      workTime: 5,
+      shortBreakTime: 1,
+      longBreakTime: 3,
     };
   }
 }
