@@ -22,3 +22,16 @@ export function getCycleType(cycle: number): Task['type'] {
   if (cycle === 8) return 'longBreakTime';
   return cycle % 2 === 0 ? 'shortBreakTime' : 'workTime';
 }
+
+/**
+ * Format a number of seconds into a string of the form 'mm:ss'.
+ * @example
+ * formatSecondsToMinutes(123) // '02:03'
+ * @param {number} seconds - The number of seconds to format.
+ * @returns {string} A string of the form 'mm:ss' representing the given number of seconds.
+ */
+export function formatSecondsToMinutes(seconds: number) {
+  const minutes = String(Math.floor(seconds / 60)).padStart(2, '0');
+  const secondsMod = String(Math.floor(seconds % 60)).padStart(2, '0');
+  return `${minutes}:${secondsMod}`;
+}

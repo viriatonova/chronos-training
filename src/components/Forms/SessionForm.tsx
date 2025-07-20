@@ -1,11 +1,11 @@
-import useTaskContext from '../../hooks/useTaskContext.ts';
-import Task from '../../core/tasks/entities/Task.entitie.ts';
+import Session from '../../core/tasks/entities/Session.entitie.ts';
+import useSessions from '../../hooks/useSessions.ts';
 
 import { useForm } from '@mantine/form';
 import { Button, Group, TextInput, ColorInput } from '@mantine/core';
 
-function CreateTaskForm() {
-  const { setTaskState } = useTaskContext();
+function SessionForm() {
+  const { setSessions } = useSessions();
 
   const form = useForm({
     mode: 'uncontrolled',
@@ -21,13 +21,8 @@ function CreateTaskForm() {
   });
 
   const handleSubmit = (values: typeof form.values) => {
-    setTaskState(prevState => {
-      const newTask = new Task(values.atividade, values.color, 0);
-      return {
-        ...prevState,
-        tasks: [newTask, ...prevState.tasks],
-      };
-    });
+    const newSession = new Session(values.atividade, values.color);
+    setSessions(prevSesssions => [newSession, ...(prevSesssions ?? [])]);
   };
 
   return (
@@ -66,4 +61,4 @@ function CreateTaskForm() {
   );
 }
 
-export default CreateTaskForm;
+export default SessionForm;

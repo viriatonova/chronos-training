@@ -1,8 +1,7 @@
-import { useContext } from 'react';
 import { Box, Flex, Title, Badge } from '@mantine/core';
-import TaskContext from '../../contexts/TaskContext';
+import useSessions from '../../hooks/useSessions';
 function TaskQueue() {
-  const { taskState } = useContext(TaskContext);
+  const { sessions } = useSessions();
 
   return (
     <Box mt={40}>
@@ -10,9 +9,14 @@ function TaskQueue() {
         Lista de Atividades
       </Title>
       <Flex gap={10} direction='row' justify='flex-start' align='center'>
-        {taskState.tasks.map(task => (
-          <Badge key={task.id} color={task.color} variant='outline' size='lg'>
-            {task.name}
+        {sessions.map(session => (
+          <Badge
+            key={session.id}
+            color={session.color}
+            variant='outline'
+            size='lg'
+          >
+            {session.name}
           </Badge>
         ))}
       </Flex>
